@@ -1,5 +1,6 @@
-## Критерії приймання ДЗ
+![preview-hw](./assets/gh-hw-preview.jpg)
 
+## Критерії приймання ДЗ
 - Створений репозиторій: `goit-react-hw-06-phonebook`
 - При здачі домашньої роботи є посилання: на вихідні файли та робочу сторінку проекту на `GitHub Pages`
 - В Redux-стані зберігається мінімально необхідний набір даних
@@ -34,7 +35,7 @@
 
 `npm install react-redux`
 
-Якщо не буде використовуватись функція `combineReducers()` то можна:
+Якщо не буде використовуватись функція `combineReducers()` то можна 2 в 1:
 
 `npm install @reduxjs/toolkit react-redux`
 
@@ -69,7 +70,7 @@ import { useDispatch } from "react-redux";
 const App = () => {
   // Отримуємо посилання на функцію actions
   const dispatch = useDispatch();
-  
+
   dispatch(deleteСontact(id));
 };
 ```
@@ -156,9 +157,22 @@ const store = configureStore({
 ## Перевірка типів одержуваних пропсів
 [**npm i prop-types**](https://www.npmjs.com/package/prop-types)
 
-`import PropTypes from 'prop-types'`
+```js
+import PropTypes from 'prop-types'
 
-
+MovieDetails.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    vote: PropTypes.number.isRequired,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }).isRequired
+    ).isRequired,
+    overview: PropTypes.string.isRequired,
+  }).isRequired,
+};
+```
 <!-- ## Генератор унікальних ідентифікаторів рядків для JS
 [**npm i nanoid**](https://www.npmjs.com/package/nanoid)
 
@@ -195,6 +209,7 @@ import styled from 'styled-components';
 export const Button = styled.button`
 background-color: black;
 transition: background-color 250ms ease-in-out;
+
 &:hover {
     background-color: #007aff;
   }
