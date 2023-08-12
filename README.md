@@ -31,16 +31,16 @@
 
 ## Бібліотека Redux Toolkit
 [npm install @reduxjs/toolkit](https://redux-toolkit.js.org/introduction/getting-started)
+
 `npm install react-redux`
 
-Якщо не буде використовуватись функція combineReducers():
+Якщо не буде використовуватись функція `combineReducers()` то можна:
 
 `npm install @reduxjs/toolkit react-redux`
 
 
 ### Зв'язування store з компонентами React
-
-```
+```js
 import { Provider } from 'react-redux';
 import { store } from "./redux/store";
 
@@ -69,16 +69,20 @@ import { useDispatch } from "react-redux";
 const App = () => {
   // Отримуємо посилання на функцію actions
   const dispatch = useDispatch();
+  
+  dispatch(deleteСontact(id));
 };
 ```
 
 ### Генератор унікальних ідентифікаторів рядків для JS (в Redux Toolkit)
 
-`import { createSlice, nanoid } from '@reduxjs/toolkit';`
+```js
+import { nanoid } from '@reduxjs/toolkit';
 
-`id: nanoid()`
+id: nanoid()
+```
 
-### Робота з localStorage в Redux
+## Робота з localStorage в Redux
 [**npm i redux-persist**](https://www.npmjs.com/package/redux-persist)
 
 ```js
@@ -122,9 +126,11 @@ export const store = configureStore({
 export const persistor = persistStore(store);
 ```
 **Iгнорування всіх типів дій, які надсилає Redux-Persist і видає помилки в консолі**
+
 [Use with Redux-Persist](https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist)
 
 ```js
+// store.js
 import {
   persistStore,
   persistReducer,
@@ -163,7 +169,7 @@ const store = configureStore({
 ## Cповіщення для React [react-hot-toast](https://react-hot-toast.com/docs)
 [**npm i react-hot-toast**](https://www.npmjs.com/package/react-hot-toast)
 
-```
+```js
 import toast, { Toaster } from 'react-hot-toast';
 
 const notify = () => toast.success('Here is your toast!', {
@@ -183,9 +189,9 @@ const App = () => {
 ## CSS на JavaScript
 [**npm i styled-components**](https://www.npmjs.com/package/styled-components)
 
-`import styled from 'styled-components';`
+```js
+import styled from 'styled-components';
 
-```
 export const Button = styled.button`
 background-color: black;
 transition: background-color 250ms ease-in-out;
